@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from WebPage.models import Productos, Integrantes, Sucursales
 from WebPage.forms import FormularioBusqueda, FormularioProducto, FormularioIntegrantes, FormularioSucursales
 
@@ -62,7 +62,7 @@ def productos_carga(request):
         
             producto.save()
 
-            return HttpResponse(f"La informacion fue ingresada correctamente")
+            return redirect ("inicio")
         
         else:
             

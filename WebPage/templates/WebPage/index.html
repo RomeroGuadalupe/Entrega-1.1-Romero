@@ -2,6 +2,15 @@
 
 {% block lista_productos %}
 
+<div>
+                
+    <form method="get">  
+      {{ formulario.as_p }}
+      <input type="submit" value="Buscar">
+    </form>  
+
+</div>  
+
 {% for producto in productos %}
 
 <div class="col mb-5">
@@ -19,11 +28,29 @@
         </div>
         <!-- Product actions-->
         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Abrir</a></div>
+            <div>
+                
+                <form method="get">  
+                  {{ formulario.as_p }}
+                  <input type="submit" value="Buscar">
+                </form>  
+          
+          </div>  
         </div>
     </div>
 </div>
 
 {% endfor %}
 
+</div>
+
+<a href="{% url 'carga_productos' %}" role="button">Cargar nuevo producto</a>
+
+<div>
+
+
+
+
+
 {% endblock lista_productos %}
+
