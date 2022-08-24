@@ -1,6 +1,8 @@
 {% extends 'WebPage/base.html' %}
 
 {% block lista_integrantes %}
+
+
     
 <h1> Somos madre e hija, y empezamos este emprendimiento juntas </h1>   
 
@@ -19,6 +21,12 @@
           
 
     {% endfor %}
+
+</div>
+
+<a href="{% url 'carga_integrantes' %}" role="button">Cargar nuevo integrante</a>
+
+<div>
 
 
 {% endblock lista_integrantes %}
