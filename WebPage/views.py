@@ -2,6 +2,10 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from WebPage.models import Productos, Integrantes, Sucursales
 from WebPage.forms import FormularioBusqueda, FormularioProducto, FormularioIntegrantes, FormularioSucursales
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView 
+from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.forms import AuthenticationForm
+
 
 
 # Create your views here.
@@ -126,6 +130,56 @@ def sucursales_carga(request):
         else:
             
             return HttpResponse(f"La informacion ingresada no es valida")
+
+class lista_productos (ListView):
+    model = Productos
+    template_name = 'WebPage/leer_prod.html'
+
+
+class detalle_prod (DetailView):
+    model = Productos
+    template_name = 'WebPage/detalle_prod.html'
+
+
+class crear_prod (CreateView):
+    model = Productos
+    success_url = "/WebPage/inicio"
+    fields = ["nombre", "modelo", "precio"]
+
+class editar_prod (UpdateView):
+    model = Productos
+    success_url = "/WebPage/inicio"
+    fields = ["nombre", "modelo", "precio"]
+
+class borrar_prod (DeleteView):
+    model = Productos
+    success_url = "/WebPage/inicio"
+
+def login(request):
+
+    if request.method == "POST":
+        formulario = AuthenticationForm(request, data = request.POST)
+        if formulario.is_valid(): 
+            data = formulario.cleaned_data
+            usuario = authenticate(username=data.get("username"), password=data.get("password")) 
+            
+            if usuario is not None:
+                login(request, usuario)
+
+                return redirect ("inicio")
+
+            else :
+                return render (request, "WebPage/login.html" , {"mensaje" : "Error, datos incorrectos"}, {"form" : formulario})
+        
+        
+        else: render (request, "WebPage/login.html", {"mensaje": "Error, formulario erroneo"}, {"form" : formulario})
+
+
+    formulario = AuthenticationForm()
+
+    return render (request, "WebPage/login.html", {"form" : formulario})
+
+
 
 
     

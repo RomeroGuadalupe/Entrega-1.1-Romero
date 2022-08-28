@@ -1,4 +1,9 @@
 from django.db import models
+from django.views.generic import ListView
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView 
+from django.urls import reverse_lazy
+
 
 # Create your models here.
 class Productos (models.Model):
@@ -8,7 +13,7 @@ class Productos (models.Model):
     
 
     def __str__(self):
-        return f"{self.nombre} - {self.modelo}"
+        return f"{self.nombre} - {self.modelo} - {self.precio}"
 
 
 class Integrantes (models.Model):
@@ -27,4 +32,11 @@ class Sucursales (models.Model):
 
     def __str__(self):
      return f"Sucursal {self.nombre}"
+
+
+
+
+
+
+
 

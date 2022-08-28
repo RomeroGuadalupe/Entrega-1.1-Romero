@@ -23,8 +23,16 @@
                 <!-- Product name-->
                 <h5 class="fw-bolder">{{producto.nombre}}</h5>
                 <!-- Product price-->
+                {{producto.modelo}}
                 ${{producto.precio}}
             </div>
+        </p> 
+            <a href="{% url 'detalle_producto' producto.id  %}">Ver mas</a> 
+            <a href="{% url 'borrar_producto' producto.id  %}">Borrar</a>
+            <a href="{% url 'editar_producto' producto.id  %}">Editar</a>
+
+        </p> 
+
         </div>
         <!-- Product actions-->
         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
@@ -35,9 +43,20 @@
 
 {% endfor %}
 
+
+
+<form  method="post" > {% csrf_token %}
+
+    
+    <input type="submit" value="Crear">
+
+    <a href="{% url 'carga_productos' %}" role="button" type="submit"> Cargar nuevo producto </a>
+    
+</form>
+
 </div>
 
-<a href="{% url 'carga_productos' %}" role="button">Cargar nuevo producto</a>
+
 
 <div>
 

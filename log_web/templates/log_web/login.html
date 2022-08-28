@@ -18,7 +18,7 @@
 
     {% endif %}
     
-    <form  method="post" > {% csrf_token %}
+    <form  method="POST" > {% csrf_token %}
 
         {{ formulario.as_p }}
         <input type="submit" value="login">
