@@ -5,7 +5,7 @@ from WebPage.forms import FormularioBusqueda, FormularioProducto, FormularioInte
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView 
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.forms import AuthenticationForm
-
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 # Create your views here.
@@ -141,43 +141,20 @@ class detalle_prod (DetailView):
     template_name = 'WebPage/detalle_prod.html'
 
 
-class crear_prod (CreateView):
+class crear_prod (LoginRequiredMixin, CreateView):
     model = Productos
     success_url = "/WebPage/inicio"
     fields = ["nombre", "modelo", "precio"]
 
-class editar_prod (UpdateView):
+class editar_prod (LoginRequiredMixin, UpdateView):
     model = Productos
     success_url = "/WebPage/inicio"
     fields = ["nombre", "modelo", "precio"]
 
-class borrar_prod (DeleteView):
+class borrar_prod (LoginRequiredMixin, DeleteView):
     model = Productos
     success_url = "/WebPage/inicio"
 
-def login(request):
-
-    if request.method == "POST":
-        formulario = AuthenticationForm(request, data = request.POST)
-        if formulario.is_valid(): 
-            data = formulario.cleaned_data
-            usuario = authenticate(username=data.get("username"), password=data.get("password")) 
-            
-            if usuario is not None:
-                login(request, usuario)
-
-                return redirect ("inicio")
-
-            else :
-                return render (request, "WebPage/login.html" , {"mensaje" : "Error, datos incorrectos"}, {"form" : formulario})
-        
-        
-        else: render (request, "WebPage/login.html", {"mensaje": "Error, formulario erroneo"}, {"form" : formulario})
-
-
-    formulario = AuthenticationForm()
-
-    return render (request, "WebPage/login.html", {"form" : formulario})
 
 
 
