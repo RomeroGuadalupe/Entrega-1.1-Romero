@@ -2,7 +2,8 @@
 from django.urls import path
 from log_web.views import iniciar_sesion, registrar_usuario, editar_usuario
 from django.contrib.auth.views import LogoutView
-
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path('iniciar_sesion/', iniciar_sesion, name="Iniciar"),
@@ -11,3 +12,6 @@ urlpatterns = [
     path('editar/', editar_usuario, name = "editar_usuario")
 
 ]
+
+# Para acceder a las imagenes desde el navegador
+
