@@ -7,11 +7,14 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 
+from log_web.models import Avatar
+
 
 # Create your views here.
 
 def index(request):
-    
+
+       
     lista_productos = Productos.objects.all()
 
     if request.GET.get("producto"):
@@ -23,7 +26,7 @@ def index(request):
             data = formulario.cleaned_data
             lista_productos = Productos.objects.filter(nombre__icontains = data["producto"])
         
-        return render(request, "WebPage/index.html", {"productos" : lista_productos, "formulario" : formulario})
+        return render(request, "WebPage/index.html", {"productos" : lista_productos, "formulario" : formulario })
     
     else:
         formulario = FormularioBusqueda()

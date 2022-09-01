@@ -1,4 +1,4 @@
-from django.forms import  CharField, EmailField, PasswordInput
+from django.forms import  CharField, EmailField, PasswordInput, ImageField, Form
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
@@ -26,3 +26,6 @@ class UserEditForm(UserCreationForm):
         model = User
         fields = ["first_name", "last_name", "email", "password1", "password2"]
         help_texts = {"email": "", "password1": "", "password2": ""}
+
+class AvatarForm(Form):
+    imagen = ImageField()

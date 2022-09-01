@@ -4,16 +4,23 @@ from django.contrib.auth import login, authenticate, logout
 from django.http import HttpResponse
 from log_web.forms import Customizacion_usuario
 from django.contrib.auth.mixins import LoginRequiredMixin
-from log_web.forms import UserEditForm
+from log_web.forms import UserEditForm, AvatarForm
+from django.contrib.auth.decorators import login_required
+from log_web.models import Avatar
+from django.contrib.auth.models import User
 
 # Create your views here.
+
+
 
 def iniciar_sesion (request):
 
     if request.method == "GET":
+
         formulario = AuthenticationForm()
         context =  {
             "formulario":formulario
+           
             }
         return render (request, "log_web/login.html", context)
 
@@ -27,7 +34,7 @@ def iniciar_sesion (request):
 
             if usuario is not None:
                 login(request, usuario)
-                return redirect ("inicio")
+                return redirect ("avatar")
 
             else:
                 context =  {
@@ -59,14 +66,12 @@ def registrar_usuario (request):
           return render (request, "log_web/registro.html",{"formulario":formulario, "error": "Formulario no valido"})
         
 
-    
+@login_required
 def editar_usuario (request):
 
     if request.method == "GET":
 
-        form = UserEditForm(initial = {"email" : request.user.email,
-                                       "first_name" : request.user.first_name,
-                                       "last_name" : request.user.last_name })
+        form = UserEditForm(initial = {"email" : request.user.email, "first_name" : request.user.first_name, "last_name" : request.user.last_name })
 
         return render (request, 'log_web/update_user.html', {"form" : form})
 
@@ -96,6 +101,40 @@ def editar_usuario (request):
             
             return render(request, 'log_web/update_user.html', {"form" : form})
         
+
+
+def avatar (request):
+       
+        if not request.user.is_anonymous:
+            avatar = Avatar.objects.filter(usuario=request.user). last()
+            contexto = {"imagen": avatar.imagen.url}
+
+        return render (request, "log_web/avatar.html", contexto)
+
+
+
+@login_required
+def agregar_avatar(request):
+
+    if request.method == "GET":
+        form = AvatarForm()
+        contexto = {"form": form}
+        return render(request, "log_web/agregar_avatar.html", contexto)
+    else:
+        form = AvatarForm(request.POST, request.FILES)
+
+        if form.is_valid():
+            data = form.cleaned_data
+
+            usuario = User.objects.filter(username=request.user.username).first()
+            avatar = Avatar(usuario=usuario,imagen=data["imagen"])
+            print(usuario)
+            print(data)
+
+            avatar.save()
+            return redirect("inicio")
+        contexto = {"form": form, }
+        return render(request, "log_web/avatar.html", contexto)
         
 
  
