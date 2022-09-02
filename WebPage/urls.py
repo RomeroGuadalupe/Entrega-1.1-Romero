@@ -3,7 +3,8 @@ from WebPage.views import *
 from WebPage.views import lista_productos, crear_prod, detalle_prod, editar_prod, borrar_prod
 
 urlpatterns = [
-    path('inicio/', index, name="inicio"),
+    path('', inicio, name="Tienda_Olivia"),
+    path('productos/', productos, name="inicio"),
     path('integrantes/', integrantes, name="integrantes"),
     path('sucursales/', sucursales, name="sucursales"),
     path('productos/carga', productos_carga, name="carga_productos"),

@@ -12,7 +12,11 @@ from log_web.models import Avatar
 
 # Create your views here.
 
-def index(request):
+def inicio(request):
+    
+     return render(request, "WebPage/index.html")
+
+def productos(request):
 
        
     lista_productos = Productos.objects.all()
@@ -26,11 +30,11 @@ def index(request):
             data = formulario.cleaned_data
             lista_productos = Productos.objects.filter(nombre__icontains = data["producto"])
         
-        return render(request, "WebPage/index.html", {"productos" : lista_productos, "formulario" : formulario })
+        return render(request, "WebPage/productos.html", {"productos" : lista_productos, "formulario" : formulario })
     
     else:
         formulario = FormularioBusqueda()
-        return render(request, "WebPage/index.html", {"productos" : lista_productos, "formulario" : formulario})
+        return render(request, "WebPage/productos.html", {"productos" : lista_productos, "formulario" : formulario})
 
     
 
