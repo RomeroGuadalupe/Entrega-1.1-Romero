@@ -22,6 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('WebPage/', include('WebPage.urls')),
     path('log_web/', include('log_web.urls')),
+    path('Mensajes/', include ('Mensajes.urls')),
 
 ]
 

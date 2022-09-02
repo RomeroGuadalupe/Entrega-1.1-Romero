@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'WebPage',
     'log_web',
+    'Mensajes',
 ]
 
 MIDDLEWARE = [
