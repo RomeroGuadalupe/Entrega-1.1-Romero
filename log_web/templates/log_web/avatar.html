@@ -5,7 +5,7 @@
 
 {% if request.user.is_authenticated %}
 
-<div>
+<div class= "container row" style = "min-width:90vw;" ><center>
     <h2> 
         Bienvenido/a {{request.user.username}} 
         <img src="{{imagen}}" width="25" height="25" / alt="Avatar"> 
@@ -23,6 +23,7 @@
         <h6> <p style="color: black"> <a href="{% url 'mensaje' %}" role="button">¿Enviar un mensaje a otro miembro del staff?</a> </p></h6> 
 
 </div>
+</center>
 
 
 {% endif %}

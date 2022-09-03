@@ -4,25 +4,18 @@
 
 {% block lista_productos %}
 
-<header class="bg-dark py-5">
-    <div class="container px-4 px-lg-5 my-5">
-        <div class="text-center text-white">
-            <h1 class="display-4 fw-bolder">Productos</h1>
-            <p class="lead fw-normal text-white-50 mb-0">Estos son todos los productos de nuestra tienda</p>
+
+<div class="container " style = "min-width:90vw;">
+    <div class="row justify-content-center">
         
+        <form method="get">  
+            {{ formulario.as_p }}
+            <input type="submit" value="Buscar">
+          </form>  
+     
     </div>
-</header>
-
-
-
-<div>
-                
-    <form method="get">  
-      {{ formulario.as_p }}
-      <input type="submit" value="Buscar">
-    </form>  
-
-</div>  
+</div>
+ 
 
 {% for producto in productos %}
 
@@ -56,9 +49,14 @@
 
 {% endfor %}
 
+<div style = "min-width:90vw;"> <center>
+
 <a class="btn btn-primary" href="{% url 'carga_productos' %}" 
 role="button" type="submit" 
 style="BORDER: rgb(128,128,128) 1px groove; FONT-SIZE: 12pt; FONT-FAMILY: Verdana;
 BACKGROUND-COLOR: rgb(255, 182, 193); COLOR:BLACK"  > Cargar nuevo producto </a>
+
+</div>
+</center>
 
 {% endblock lista_productos %}

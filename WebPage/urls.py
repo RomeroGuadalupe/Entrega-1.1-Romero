@@ -1,6 +1,6 @@
 from django.urls import path
 from WebPage.views import *
-from WebPage.views import lista_productos, crear_prod, detalle_prod, editar_prod, borrar_prod
+from WebPage.views import lista_productos, crear_prod, detalle_prod, editar_prod, borrar_prod, agregar_foto
 
 urlpatterns = [
     path('', inicio, name="Tienda_Olivia"),
@@ -11,10 +11,8 @@ urlpatterns = [
     path('integrantes/carga/', integrantes_carga, name="carga_integrantes"),
     path('sucursales/carga/', sucursales_carga, name ="carga_sucursales"),
     path('login/', login, name = 'Login'),
-    
-    
-    
-    
+    #path('foto/', foto_producto, name="foto"),
+    path('agregar_foto/', agregar_foto, name="agregar_foto"),
     path('productos/lista', lista_productos.as_view(), name = "lista_productos"),
     path('productos/crear/', crear_prod.as_view(), name = 'crear_producto' ),
     path('productos/editar/<pk>', editar_prod.as_view(), name = 'editar_producto' ),

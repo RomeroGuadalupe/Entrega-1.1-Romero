@@ -10,11 +10,12 @@ class Productos (models.Model):
     nombre = models.CharField (max_length=150)
     modelo = models.CharField (max_length=150, blank=True , null=True)
     precio = models.IntegerField (default=0)
+    imagen = models.ImageField (upload_to = "productos", null = True, blank = True)
+    
     
 
     def __str__(self):
-        return f"{self.nombre} - {self.modelo} - {self.precio}"
-
+        return f"{self.nombre} - {self.modelo} - {self.precio} - {self.imagen}"
 
 class Integrantes (models.Model):
     nombre = models.CharField (max_length=150)

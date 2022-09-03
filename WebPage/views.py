@@ -1,11 +1,12 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from WebPage.models import Productos, Integrantes, Sucursales
+from WebPage.models import  Productos, Integrantes, Sucursales
 from WebPage.forms import FormularioBusqueda, FormularioProducto, FormularioIntegrantes, FormularioSucursales
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView 
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 
 from log_web.models import Avatar
 
@@ -17,7 +18,6 @@ def inicio(request):
      return render(request, "WebPage/index.html")
 
 def productos(request):
-
        
     lista_productos = Productos.objects.all()
 
@@ -53,7 +53,7 @@ def sucursales(request):
 
 
 def productos_carga(request):
-
+    
     if request.method == "GET":
         formulario = FormularioProducto()
         return render (request, "WebPage/form_productos.html", {"formulario":formulario})
@@ -61,7 +61,7 @@ def productos_carga(request):
 
     else:
 
-        formulario = FormularioProducto(request.POST)
+        formulario = FormularioProducto(request.POST, request.FILES)
 
         if formulario.is_valid(): 
 
@@ -69,7 +69,10 @@ def productos_carga(request):
            
             nombre = data.get("nombre_producto")
             precio = data.get("precio")
-            producto = Productos(nombre=nombre, precio=precio)
+            modelo = data.get("modelo")
+            imagen = data["imagen"]
+            
+            producto = Productos(nombre=nombre, precio=precio, modelo=modelo, imagen=imagen)
         
             producto.save()
 
@@ -150,20 +153,48 @@ class detalle_prod (DetailView):
 
 class crear_prod (LoginRequiredMixin, CreateView):
     model = Productos
-    success_url = "/WebPage/inicio"
+    success_url = "/WebPage/productos"
     fields = ["nombre", "modelo", "precio"]
 
 class editar_prod (LoginRequiredMixin, UpdateView):
     model = Productos
-    success_url = "/WebPage/inicio"
+    success_url = "/WebPage/productos"
     fields = ["nombre", "modelo", "precio"]
 
 class borrar_prod (LoginRequiredMixin, DeleteView):
     model = Productos
-    success_url = "/WebPage/inicio"
+    success_url = "/WebPage/productos"
 
 
+#def foto_producto (request):
+       
+        
+ #       foto = Productos.objects.filter(nombre=foto.nombre). last()
+  #      contexto = {"imagen": foto.imagen.url}
 
+   #     return render (request, "WebPage/agregar_foto.html", contexto)
+
+
+def agregar_foto(request):
+
+    if request.method == "GET":
+        form = Productos()
+        contexto = {"form": form}
+        return render(request, "WebPage/productos.html", contexto)
+    else:
+        form = Productos(request.POST, request.FILES)
+
+        if form.is_valid():
+            data = form.cleaned_data
+
+            foto = Productos(imagen=data["imagen"])
+            
+            print(data)
+
+            foto.save()
+            return redirect("inicio")
+        contexto = {"form": form, }
+        return render(request, "WebPage/productos.html", contexto)
 
 
     
