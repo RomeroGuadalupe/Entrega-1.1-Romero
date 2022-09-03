@@ -4,6 +4,6 @@ from Mensajes.views import mensaje_nuevo, mensajeria
 
 urlpatterns = [
     path('', mensaje_nuevo, name="mensaje"),
-    path('mensajes/', mensajeria, name="mensajeria")
+    path('mensajes/', mensajeria, name="mensajeria"),
     
 ]

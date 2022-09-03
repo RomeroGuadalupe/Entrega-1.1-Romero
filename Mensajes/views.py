@@ -28,11 +28,11 @@ def mensaje_nuevo(request):
         if formulario.is_valid(): 
 
             data = formulario.cleaned_data
-           
+            fecha = datetime.today()
             texto = data.get("texto_mensaje")
-            emisor = data.get("emisor_mensaje")
+            emisor = request.user.username
             receptor = data.get("receptor_mensaje")
-            mensaje = Mensajes(texto=texto, emisor=emisor , receptor=receptor)
+            mensaje = Mensajes(texto=texto, emisor=emisor , receptor=receptor, fecha=fecha)
         
             mensaje.save()
 

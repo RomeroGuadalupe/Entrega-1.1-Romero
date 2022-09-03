@@ -17,9 +17,11 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
+from WebPage.views import inicio
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', inicio, name="Tienda_Olivia"),
     path('WebPage/', include('WebPage.urls')),
     path('log_web/', include('log_web.urls')),
     path('Mensajes/', include ('Mensajes.urls')),

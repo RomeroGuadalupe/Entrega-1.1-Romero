@@ -1,31 +1,40 @@
-{% extends 'WebPage/base.html' %} 
+{% extends 'WebPage/base.html' %}
 
 {% block contenido %}
-    
-<h1> Tienes los siguientes mensajes en tu bandeja </h1>   
-
+<table class = "table" style = "width:50vw;">
 <p>
-    {% for mensaje in mensajes%}
+    {% for mensaje in mensajes %}
+    <tr>
+{% if mensaje.emisor == request.user.username %}
     
-         De: {{ request.user.username }}  <br>
-         Para: {{mensaje.receptor }}  <br>
-         Mensaje: {{mensaje.texto }} <br>
-         
-  
+        <td style = "text-align: left;">
+            De: {{ mensaje.emisor}}  <br>
+            Para: {{mensaje.receptor }}  <br>
+            Mensaje: {{mensaje.texto }}<br>
+            Fecha: {{mensaje.fecha }}<br>
+            
+{% elif  mensaje.receptor == request.user.username %}
+        
+<td style = "text-align: right;">
+            De: {{ mensaje.emisor }}  <br>
+            Para: {{mensaje.receptor }}  <br>
+            Mensaje: {{mensaje.texto }}<br>
+            Fecha: {{mensaje.fecha }}<br>
+        
+    
+{% endif %}
 </p>
-
-
-<p>
-    Ultimo inicio de sesion: {{ request.user.last_login }} 
-</p>
-
-              
-    {% endfor %}
-
-</div>
-
-<a href="{% url 'mensaje' %}" role="button">Escriba un mensaje</a>
-
-<div>
-  
+</td></tr>
+{% endfor %}
+    <tr><td>
+        <center>
+            <a href="{% url 'mensaje' %}" role="button">
+                <button style ="box-shadow:inset 0px 0px 15px 3px #23395e;background:linear-gradient(to bottom, #2e466e 5%, #415989 100%);background-color:#2e466e;border-radius:17px;border:1px solid #1f2f47;display:inline-block;cursor:pointer;color:#ffffff;font-family:Arial;font-size:15px;padding:9px 76px;text-decoration:none;text-shadow:0px 1px 0px #263666;">
+                    Nuevo Mensaje
+                </button>
+            </a>
+            </center>
+    </td></tr>
+</table>
+<div>  
 {% endblock contenido %}
