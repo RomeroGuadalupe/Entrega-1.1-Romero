@@ -1,13 +1,16 @@
 {% extends 'WebPage/base.html' %}
 
-
 {% block productos %}
   
-    <form  method="POST" > {% csrf_token %}
+    <form  method="POST"  enctype="multipart/form-data"> {% csrf_token %}
+        
         {{ form.as_p }}
-
-
+        <input type="submit" value="Volver" onclick="history.back()">
+        {% if request.method == "POST" %}
         <input type="submit" value="Crear">
+        {% elif request.method == "GET" %}
+        <input type="submit" value="Actualizar">
+        {% endif %}
     </form>
 
 {% endblock productos %}

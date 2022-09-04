@@ -7,14 +7,14 @@
 
 <h2> Detalle del producto </h2>   
    
- 
+
    
-   El producto que selecciono es:   {{ productos.nombre }}<br>
+   <img src = "/media/{{productos.imagen}}" style = "max-width:15vw;"><br>
    
    El modelo es:   {{ productos.modelo }}<br>
 
    Tiene un precio de:   {{ productos.precio}}<br>
-
+<br>
    <a class="btn btn-primary" href="{% url 'inicio' %}" 
    role="button" type="submit" 
    style="BORDER: rgb(128,128,128) 1px groove; FONT-SIZE: 12pt; FONT-FAMILY: Verdana;

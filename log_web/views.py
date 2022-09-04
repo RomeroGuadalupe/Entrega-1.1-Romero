@@ -109,6 +109,7 @@ def avatar (request):
         if not request.user.is_anonymous:
             avatar = Avatar.objects.filter(usuario=request.user). last()
             contexto = {"imagen": avatar.imagen.url}
+            
 
         return render (request, "log_web/avatar.html", contexto)
 

@@ -7,6 +7,7 @@ class FormularioProducto(Form):
     nombre_producto = CharField(max_length=150)
     precio = CharField(max_length=150)
     modelo = CharField(max_length=150)
+    imagen = ImageField()
     
     
 

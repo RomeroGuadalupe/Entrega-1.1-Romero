@@ -10,8 +10,7 @@ from datetime import datetime
 def mensajeria(request):
     
     mensajes = Mensajes.objects.all()
-    
-    return render(request, "Mensajes/mensajes.html", {"mensajes" : mensajes})
+    return render (request, "Mensajes/mensajes.html", {"mensajes" : mensajes})
 
 @login_required
 def mensaje_nuevo(request):
@@ -30,8 +29,8 @@ def mensaje_nuevo(request):
             data = formulario.cleaned_data
             fecha = datetime.today()
             texto = data.get("texto_mensaje")
-            emisor = request.user.username
             receptor = data.get("receptor_mensaje")
+            emisor = request.user.username
             mensaje = Mensajes(texto=texto, emisor=emisor , receptor=receptor, fecha=fecha)
         
             mensaje.save()

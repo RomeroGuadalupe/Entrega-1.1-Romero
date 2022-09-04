@@ -2,10 +2,16 @@
     
 {% block contenido %}
     <form  method="post" > {% csrf_token %}
-        <h3> Escriba el mensaje que desea enviar: </h3>   
-        {{ formulario.as_p }}
-        <input type="submit" value="Enviar">
+        <center><h3> Escriba el mensaje que desea enviar: </h3>  <center> 
+        Receptor<br><input type = "text" name = "receptor_mensaje">
         
+        <br>Mensaje<br>
+        <textarea name = "texto_mensaje" rows = "3" cols = "20"></textarea><br>
+        </center>
+        <input type = "hidden" name = "emisor_mensaje" value = "agustin">
+        <input type = "hidden" name = "fecha" value = "2022-02-02">
+        <input type="submit" value="Enviar" class = "buttonestilo">
+        </center>
    </form>
 
  

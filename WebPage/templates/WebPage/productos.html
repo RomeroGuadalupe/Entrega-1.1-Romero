@@ -7,11 +7,15 @@
 
 <div class="container " style = "min-width:90vw;">
     <div class="row justify-content-center">
-        
-        <form method="get">  
+        <table width = "100%" border = "0">
+            <form method="get">  
+            <tr><td align = "right" width = "50%" valign = "bottom">        
             {{ formulario.as_p }}
-            <input type="submit" value="Buscar">
-          </form>  
+        </td><td align = "left" valign = "middle"><input type="submit" value="Buscar" class = "buttonestilo">
+          </form> </center> 
+        </td></tr>
+        <tr><td colspan = "2">&nbsp; </td></tr>
+        </table>
      
     </div>
 </div>
@@ -32,12 +36,22 @@
                 {{producto.modelo}}
                 ${{producto.precio}}
             </div>
-        </p> 
-            <a href="{% url 'detalle_producto' producto.id  %}">Ver mas</a> 
-            <a href="{% url 'borrar_producto' producto.id  %}">Borrar</a>
-            <a href="{% url 'editar_producto' producto.id  %}">Editar</a>
-
-        </p> 
+        
+           
+            <br>
+            <center>
+                    <a href="{% url 'detalle_producto' producto.id  %}" style = "text-decoration:none;">
+                    <img src = "/media/icons/ver.png" width="20vw">
+                    </a> 
+                
+                    <a href="{% url 'borrar_producto' producto.id  %}" style = "text-decoration:none;">
+                    <img src = "/media/icons/borrar.png" width="20vw">
+                    </a>
+                
+                    <a href="{% url 'editar_producto' producto.id  %}" style = "text-decoration:none;">
+                    <img src = "/media/icons/editar.png" width="20vw">
+                    </a>
+            </center>
 
         </div>
         <!-- Product actions-->
@@ -51,10 +65,7 @@
 
 <div style = "min-width:90vw;"> <center>
 
-<a class="btn btn-primary" href="{% url 'carga_productos' %}" 
-role="button" type="submit" 
-style="BORDER: rgb(128,128,128) 1px groove; FONT-SIZE: 12pt; FONT-FAMILY: Verdana;
-BACKGROUND-COLOR: rgb(255, 182, 193); COLOR:BLACK"  > Cargar nuevo producto </a>
+<a class="buttonestilo" href="{% url 'carga_productos' %}" role="button" type="submit" > Cargar nuevo producto </a>
 
 </div>
 </center>

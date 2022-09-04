@@ -5,25 +5,29 @@
 
 {% if request.user.is_authenticated %}
 
-<div class= "container row" style = "min-width:90vw;" ><center>
+<div class= "container row" style = "min-width:60vw;" >
     <h2> 
         Bienvenido/a {{request.user.username}} 
+        {% if imagen != "" %}
         <img src="{{imagen}}" width="25" height="25" / alt="Avatar"> 
+        {% else %}
+        <img src="/media/noimg.png" width="25" height="25" / alt="Avatar"> 
+        {% endif %}
     </h2>
      
     <p>
         Tu ultimo inicio de sesion fue: {{ request.user.last_login }} 
     </p>
     <h3> <p style="color: pink"> Elija la opcion que desea realizar: </p></h3> 
-        <h6> <p style="color: black"> <a href="{% url 'carga_productos' %}" role="button">¿Cargar un Producto?</a> </p></h6> 
-        <h6> <p style="color: black"> <a href="{% url 'carga_sucursales' %}" role="button">¿Cargar una Sucursal?</a> </p></h6> 
-        <h6> <p style="color: black"> <a href="{% url 'carga_integrantes' %}" role="button">¿Cargar un nuevo Integrante?</a> </p></h6> 
-        <h6> <p style="color: black"> <a href="{% url 'editar_usuario' %}" role="button">¿Editar la informacion de su perfil?</a> </p></h6> 
-        <h6> <p style="color: black"> <a href="{% url 'agregar_avatar' %}" role="button">¿Editar su avatar?</a> </p></h6> 
-        <h6> <p style="color: black"> <a href="{% url 'mensaje' %}" role="button">¿Enviar un mensaje a otro miembro del staff?</a> </p></h6> 
+        <h6> <p style="color: black"> <a href="{% url 'carga_productos' %}" role="button" class="buttonestilo" >¿Cargar un Producto?</a> </p></h6> 
+        <h6> <p style="color: black"> <a href="{% url 'carga_sucursales' %}" role="button" class="buttonestilo" >¿Cargar una Sucursal?</a> </p></h6> 
+        <h6> <p style="color: black"> <a href="{% url 'carga_integrantes' %}" role="button" class="buttonestilo" >¿Cargar un nuevo Integrante?</a> </p></h6> 
+        <h6> <p style="color: black"> <a href="{% url 'editar_usuario' %}" role="button" class="buttonestilo" >¿Editar la informacion de su perfil?</a> </p></h6> 
+        <h6> <p style="color: black"> <a href="{% url 'agregar_avatar' %}" role="button" class="buttonestilo" >¿Editar su avatar?</a> </p></h6> 
+        <h6> <p style="color: black"> <a href="{% url 'mensaje' %}" role="button" class="buttonestilo" >¿Enviar un mensaje a otro miembro del staff?</a> </p></h6> 
 
 </div>
-</center>
+
 
 
 {% endif %}

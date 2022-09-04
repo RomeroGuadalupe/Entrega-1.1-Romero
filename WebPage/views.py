@@ -80,7 +80,8 @@ def productos_carga(request):
         
         else:
             
-            return HttpResponse(f"La informacion ingresada no es valida")
+            return HttpResponse(f"La informacion ingresada no es valida", imagen)
+
        
 
 def integrantes_carga(request):
@@ -159,7 +160,7 @@ class crear_prod (LoginRequiredMixin, CreateView):
 class editar_prod (LoginRequiredMixin, UpdateView):
     model = Productos
     success_url = "/WebPage/productos"
-    fields = ["nombre", "modelo", "precio"]
+    fields = ["nombre", "modelo", "precio", "imagen"]
 
 class borrar_prod (LoginRequiredMixin, DeleteView):
     model = Productos

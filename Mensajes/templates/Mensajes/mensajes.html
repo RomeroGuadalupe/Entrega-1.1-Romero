@@ -5,27 +5,27 @@
 <p>
     {% for mensaje in mensajes %}
     <tr>
-{% if mensaje.emisor == request.user.username %}
-    
-        <td style = "text-align: left;">
-            De: {{ mensaje.emisor}}  <br>
-            Para: {{mensaje.receptor }}  <br>
-            Mensaje: {{mensaje.texto }}<br>
-            Fecha: {{mensaje.fecha }}<br>
+        {% if mensaje.emisor == request.user.username %}
             
-{% elif  mensaje.receptor == request.user.username %}
-        
-<td style = "text-align: right;">
-            De: {{ mensaje.emisor }}  <br>
-            Para: {{mensaje.receptor }}  <br>
-            Mensaje: {{mensaje.texto }}<br>
-            Fecha: {{mensaje.fecha }}<br>
-        
-    
-{% endif %}
-</p>
-</td></tr>
-{% endfor %}
+                <td style = "text-align: left;">
+                    De: {{ mensaje.emisor}}  <br>
+                    Para: {{mensaje.receptor }}  <br>
+                    Mensaje: {{mensaje.texto }}<br>
+                    Fecha: {{mensaje.fecha }}<br>
+                    
+        {% elif  mensaje.receptor == request.user.username %}
+                
+        <td style = "text-align: right;">
+                    De: {{ mensaje.emisor }}  <br>
+                    Para: {{mensaje.receptor }}  <br>
+                    Mensaje: {{mensaje.texto }}<br>
+                    Fecha: {{mensaje.fecha }}<br>
+                
+            
+        {% endif %}
+    </p>
+    </td></tr>
+    {% endfor %}
     <tr><td>
         <center>
             <a href="{% url 'mensaje' %}" role="button">
