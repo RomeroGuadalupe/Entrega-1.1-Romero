@@ -11,7 +11,10 @@ class Productos (models.Model):
     modelo = models.CharField (max_length=150, blank=True , null=True)
     precio = models.IntegerField (default=0)
     imagen = models.ImageField (upload_to = "productos", null = True, blank = True)
-    
+    Stock = models.FloatField(default=0)
+    info = models.CharField(max_length=1500, default=0)
+    fecha = models.DateField(db_column= 'fecha', blank= True, null = True)
+
     
 
     def __str__(self):
@@ -23,7 +26,7 @@ class Integrantes (models.Model):
     profesion = models.CharField(max_length=150)
     
     def __str__(self):
-     return f"informacion de {self.nombre}"
+     return f"informacion de {self.nombre} - {self.edad} - {self.profesion}"
 
 class Sucursales (models.Model):
     nombre = models.CharField(max_length=150)

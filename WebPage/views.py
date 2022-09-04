@@ -51,7 +51,7 @@ def sucursales(request):
     
     return render(request, "WebPage/sucursales.html", {"sucursales" : lista_sucursales})
 
-
+@login_required
 def productos_carga(request):
     
     if request.method == "GET":

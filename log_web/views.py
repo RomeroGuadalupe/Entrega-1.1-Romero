@@ -107,9 +107,8 @@ def editar_usuario (request):
 def avatar (request):
        
         if not request.user.is_anonymous:
-            avatar = Avatar.objects.filter(usuario=request.user). last()
+            avatar = Avatar.objects.filter(). last()
             contexto = {"imagen": avatar.imagen.url}
-            
 
         return render (request, "log_web/avatar.html", contexto)
 
@@ -137,7 +136,6 @@ def agregar_avatar(request):
             return redirect("inicio")
         contexto = {"form": form, }
         return render(request, "log_web/avatar.html", contexto)
-        
 
  
 

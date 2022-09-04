@@ -5,7 +5,7 @@
   
     <form  method="POST" > {% csrf_token %}
        
-        <p> desea boorar efectivamente al producto? {{ object }}</p>
+        <p> Desea borrar el producto? {{ object }}</p>
         <input type="submit" value="Confirmar">
         <a href="{% url 'inicio'  %}">Volver</a>
     </form>

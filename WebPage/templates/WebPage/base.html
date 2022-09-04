@@ -34,6 +34,8 @@
                                 <li><hr class="dropdown-divider" /></li>
                                 <li><a class="dropdown-item" href="{% url 'editar_usuario' %}">Editar</a></li>
                                 <li><a class="dropdown-item" href="{% url 'Registrarse' %}">Registrarse</a></li>
+                                <li><a class="dropdown-item" href="{% url 'mensaje' %}">Enviar Mensaje</a></li>
+                                <li><a class="dropdown-item" href="{% url 'mensajeria' %}">Mensajes Recibidos</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -57,18 +59,53 @@
                     </form>
             </div>
         </nav>
-        <!-- Header-->
-        <header class="bg-dark py-5">
-            <div class="container px-4 px-lg-5 my-5">
-                <div class="text-center text-white">
-                    <h1 class="display-4 fw-bolder">{% if breadcrumbs %}
-                        
-                            {% include "dynamic_breadcrumbs/breadcrumbs.html" with breadcrumbs=breadcrumbs%}
-                       
-                        {% endif %}</h1>
-                    
-            </div>
-        </header>
+<!-- Header-->
+<header class="bg-dark py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+            <h1>
+        
+            {% if request.path == '/WebPage/productos/' %}
+                <p>Productos</p>
+            {% elif request.path == '/WebPage/integrantes/' %}
+                <p>Integrantes</p>
+            {% elif request.path == '/WebPage/sucursales/' %}
+                <p>Sucursales</p>
+            {% elif request.path == '/WebPage/' %}
+                <p>Tienda Olivida</p>
+            {% elif request.path == '/' %}
+                <p>Tienda Olivida</p>
+            {% elif request.path == '/WebPage/sucursales/carga/' %}
+                <p>Nueva Sucursal</p>
+            {% elif request.path == '/WebPage/integrantes/carga/' %}
+                <p>Nuevo Integrante</p>
+            {% elif request.path == '/WebPage/productos/carga' %}
+                <p>Agregar Producto</p>
+
+            {% elif request.path == '/log_web/iniciar_sesion/' %}
+                <p>Iniciar Sesion</p>
+            {% elif request.path == '/log_web/cerrar_sesion/' %}
+                <p>Cerrar Sesion</p>
+            {% elif request.path == '/log_web/registrar_usuario/' %}
+                <p>Registro</p>
+            {% elif request.path == '/log_web/agregar_avatar/' %}
+                <p>Nuevo Avatar</p>
+            {% elif request.path == '/log_web/avatar/' %}
+                <p>Mi Perfil</p>
+            {% elif request.path == '/log_web/editar/' %}
+                <p>Editar Perfil</p>
+            
+            {% elif request.path == '/Mensajes/' %}
+                <p>Escriba su mensaje</p>
+            {% elif request.path == '/Mensajes/mensajes/' %}
+                <p>Mensajes</p>
+            
+            {% endif %}
+            
+            </h1>
+            
+    </div>
+</header>
  
         <!-- Section-->
         <section class="">
@@ -121,7 +158,7 @@
         </section>
         <!-- Footer-->
         <footer class="py-5 bg-dark">
-            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Camila Belen Pedulla, Guadalupe Romero</p></div>
+            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Camila Belen Pedulla, Guadalupe Romero.  Tienda Olivia - 2022. Todos los derechos reservados.</p></div>
         </footer>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>

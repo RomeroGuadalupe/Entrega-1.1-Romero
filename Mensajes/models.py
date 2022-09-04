@@ -10,3 +10,7 @@ class Mensajes(models.Model):
     emisor = models.CharField(max_length=150)
     fecha = models.DateField(db_column= 'fecha', blank= True, null = True)
     receptor = models.CharField(max_length=150)
+
+    
+    def __str__(self):
+        return f"{self.texto} - {self.emisor} - {self.fecha} "
