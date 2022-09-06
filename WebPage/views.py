@@ -167,14 +167,6 @@ class borrar_prod (LoginRequiredMixin, DeleteView):
     success_url = "/WebPage/productos"
 
 
-#def foto_producto (request):
-       
-        
- #       foto = Productos.objects.filter(nombre=foto.nombre). last()
-  #      contexto = {"imagen": foto.imagen.url}
-
-   #     return render (request, "WebPage/agregar_foto.html", contexto)
-
 
 def agregar_foto(request):
 

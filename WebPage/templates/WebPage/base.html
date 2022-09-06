@@ -72,9 +72,9 @@
             {% elif request.path == '/WebPage/sucursales/' %}
                 <p>Sucursales</p>
             {% elif request.path == '/WebPage/' %}
-                <p>Tienda Olivida</p>
+                <p>Tienda Olivia</p>
             {% elif request.path == '/' %}
-                <p>Tienda Olivida</p>
+                <p>Tienda Olivia</p>
             {% elif request.path == '/WebPage/sucursales/carga/' %}
                 <p>Nueva Sucursal</p>
             {% elif request.path == '/WebPage/integrantes/carga/' %}
@@ -101,7 +101,12 @@
                 <p>Mensajes</p>
             
             {% endif %}
+            {% block encabezado %}
+            {% endblock encabezado %}
+
             
+            {% block encabezado1 %}
+            {% endblock encabezado1 %}
             </h1>
             
     </div>

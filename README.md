@@ -12,6 +12,8 @@ En la pagina principal,  contamos con un buscador para localizar mas rápido el 
 
 A su vez, navegando por las distintas solapas de la Web, se podrá encontrar informacion sobre las sucursales y sobre los integrantes del equipo.
 
+Contamos tambien, dentro de la solapa "Mi Perfil", con distintas acciones que puede realizar el usuario, entre ellas, el envio de un Mensaje a otro usuario.
+
 Si se desea ingresar a la base de datos con usuario administrador, se debe hacer a traves de : http://127.0.0.1:8000/admin
 
 Division de las tareas:
@@ -31,7 +33,6 @@ Detallamos a continuacion lo necesario para poder ver nuestra Web en funcionamie
 1.	Clonar el proyecto
 2.	Instalar las dependencias del proyecto: pip install django
 2.	Instalar las dependencias del proyecto: pip install Pillow
-2.	Instalar las dependencias del proyecto: pip install django-dynamic-breadcrumbs
 3.	Crear las migraciones ejecutando python manage.py makemigrations y luego python manage.py migrate
 4.	Correr la aplicacion con python manage.py runserver
 
@@ -39,3 +40,7 @@ Detallamos a continuacion lo necesario para poder ver nuestra Web en funcionamie
 Podran acceder a los casos de prueba desde el siguiente link:
 
 https://docs.google.com/document/d/1V-peiQur3BmYyDqB4pSWkc0gVemZ-tsFz05B_5XJ3nA/edit
+
+
+Video demostrativo:
+https://www.loom.com/share/5d1bdf3fb5bc4d92a78b13442a2a5d22

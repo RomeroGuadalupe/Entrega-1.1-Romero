@@ -8,11 +8,10 @@
 <div class= "container row" style = "min-width:60vw;" >
     <h2> 
         Bienvenido/a {{request.user.username}} 
-        {% if imagen != "" %}
-        <img src="{{imagen}}" width="25" height="25" / alt="Avatar"> 
-        {% else %}
-        <img src="/media/noimg.png" width="25" height="25" / alt="Avatar"> 
-        {% endif %}
+       
+        <img src="{{imagen}}" width="100" height="100" / alt="Avatar"> 
+  
+   
     </h2>
      
     <p>

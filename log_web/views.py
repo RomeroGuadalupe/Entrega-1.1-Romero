@@ -101,16 +101,17 @@ def editar_usuario (request):
         else:
             
             return render(request, 'log_web/update_user.html', {"form" : form})
-        
 
-
+@login_required      
 def avatar (request):
        
         if not request.user.is_anonymous:
-            avatar = Avatar.objects.filter(). last()
+            avatar = Avatar.objects.filter(usuario=request.user). last()
             contexto = {"imagen": avatar.imagen.url}
 
         return render (request, "log_web/avatar.html", contexto)
+
+
 
 
 

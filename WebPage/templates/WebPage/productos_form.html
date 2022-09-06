@@ -1,5 +1,8 @@
 {% extends 'WebPage/base.html' %}
 
+{% block encabezado1 %}
+Editar producto
+{% endblock encabezado1 %}
 {% block productos %}
   
     <form  method="POST"  enctype="multipart/form-data"> {% csrf_token %}
